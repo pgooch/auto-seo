@@ -3,7 +3,7 @@ Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
 Tested up to: 3.9.1
-Stable tag: 2.0.0
+Stable tag: 2.1.1
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,9 +11,9 @@ Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptio
 
 == Description ==
 
-Auto SEO is a simple way t add all your SEO header tags from a single interface. It will generate new meta tags, replaceing any old ones your theme may add already, fully customized to target the audience you want. Don’t want to override everything? No problem, you choose what to override and on what post types to do it. Take the tedidum out of SEO.
+Auto SEO is a simple way to add all your SEO header tags from a single interface. It will generate new meta tags, replacing any old ones your theme may add already, that are fully customized to target the audience you want. Don't want to override everything? No problem, you choose what to override and on what post types to do it. Take the tedium out of SEO.
 
-_Note: because Auto SEO is designed to override existing meta tags when needed it works a bit differently than other SEO plugins and as such may not work on every theme. While it has been tested with a wide variety of different themes naturally it would be impossible to test them all. If your having trouble getting it to active on your site I’m more than willing to help, just let me know what theme your using and I’ll take a look, contact information inside the plugin.
+_Note: because Auto SEO is designed to override existing meta tags when needed it works a bit differently than other SEO plugins and as such may not work on every theme. While it has been tested with a wide variety of different themes naturally it would be impossible to test them all. If your having trouble getting it to active on your site I'm more than willing to help, just let me know what theme your using and I'll take a look, contact information inside the plugin.
 
 == Installation ==
 
@@ -25,7 +25,7 @@ The settings page has notes on their functions and should be self explanatory, b
 
 - **Active Post Types** determines where Auto SEO inserts/replaces meta data.
 
-- **Keyword Sets** lets you define sets of keywords to be automagically inserted into the description where you want them, also shows the poo, from which meta keyweords and chosen.
+- **Keyword Sets** lets you define sets of keywords to be automagically inserted into the description where you want them, also shows the pool from which meta keywords and chosen.
 
 - **Meta Tag Options** let you control what tags are enabled, and set up new title tags, meta descriptions, and the number of keywords as well as override the robots if desired.
 
@@ -41,6 +41,9 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.1.1
+ + Added a button to check if AutoSEO is working.
+ + Fixed some really terrible typos in the readme and settings page.
 #### 2.0.0
  + Completly rewritten from the ground up, bigger, better, faster, stronger.
  + Now supports completly custom keyword sets.

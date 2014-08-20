@@ -5,7 +5,7 @@
 		<input type="hidden" name="action" value="update" />
 		<h3 class="title">Active Post Types</h3>
 		<table class="form-table">
-			<p class="description">After enabling Critique in a post type you may need to go to your Screen Options and select it to be displayed. If you disable critique from a post type preview reviews from that type will no longer be shown.</p>
+			<p class="description">Which post types would you like Auto SEO to run on?</p>
 			<tr valign="top">
 				<th scope="row">Enable in Posts Types</th>
 				<td>
@@ -24,7 +24,7 @@
 
 		<h3 class="title">Keyword Sets</h3>
 		<table class="form-table keyword-sets">
-			<p class="description">Using a set name in brackets (ie <code>[Example Set]</code>) in a meta tag will insert a randomly selected keyword in that set. Keywords should be comma separated. Delete a keyword sets name in order to remove the set.</p>
+			<p class="description">Using a set name in brackets (ie <code>[Example Set]</code>) in a meta tag will insert a randomly selected keyword in that set. Keywords should be comma separated. Deleting a keyword sets name will remove the set.</p>
 			<tr valign="top">
 				<th scope="col">Set Name</th>
 				<th scope="col" class="pseudo_header">Set Keywords</th>
@@ -78,7 +78,7 @@
 				<th scope="row"><label for="keywords">Number of Keywords</label></th>
 				<td>
 					<input name="keywords" type="number" id="keywords" value="<?= $this->settings['keywords'] ?>" class="regular-text">
-					<p class="description">How many keywords you want placed in the keywords meta tag. Keywords pulled from all sets.</p>
+					<p class="description">How many keywords you want placed in the keywords meta tag. Keywords are pulled from all sets.</p>
 				</td>
 			</tr>
 			<tr valign="top">
@@ -98,6 +98,26 @@
 		</p>
 	</form>
 
+	<h3 class="title">Compatibility</h3>
+	<a name="compatibility"></a>
+	<p class="description compatibility">Auto SEO is currently checking compatibility...</p>
+	<script>
+		/* If this was anything more than a single very simple script I would have put it in it's own JS file. */
+		function checkCompatibility(){
+			jQuery('p.description.compatibility').html('Auto SEO is currently checking compatibility...');
+			jQuery.post('<?= get_site_url() ?>',{'autoseo_compatibility':'check'},function(r){
+				if(r.match(/<!-- Auto SEO Added -->/g).length>0){
+					var new_string = 'Auto SEO appears to be workings.';
+				}else{
+					var new_string = 'Auto SEO does not appear to be compatible with your current Theme and Plugin Combination.';
+				}
+				new_string += ' <a href="#compatibility" onclick="checkCompatibility()">Click here to run compatibility check again.</a>';
+				jQuery('p.description.compatibility').html(new_string);
+			});
+		}
+		checkCompatibility();
+	</script>
+	<br/>
 	<h3 class="title">Miscellaneous</h3>
 	<table class="form-table">
 		<tr valign="top">
