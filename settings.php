@@ -107,7 +107,7 @@
 			jQuery('p.description.compatibility').html('Auto SEO is currently checking compatibility...');
 			jQuery.post('<?= get_site_url() ?>',{'autoseo_compatibility':'check'},function(r){
 				if(r.match(/<!-- Auto SEO Added -->/g).length>0){
-					var new_string = 'Auto SEO appears to be workings.';
+					var new_string = 'Auto SEO appears to be working.';
 				}else{
 					var new_string = 'Auto SEO does not appear to be compatible with your current Theme and Plugin Combination.';
 				}
