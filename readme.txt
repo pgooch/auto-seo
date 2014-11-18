@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.0
-Stable tag: 2.1.1
+Tested up to: 4.0.0
+Stable tag: 2.1.2
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,10 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.1.2
+ + Fixed a bug that would prevent scripts from loading in my "critique" plugin.
+ + Fixed a typo that would cause double backslashes from appearing in the script and style links (although the script and style fiels still loaded properly).
+ + Updated the tested on version to 4.0.0 (it has previously been tested although the version did not get updated).
 #### 2.1.1
  + Added a button to check if AutoSEO is working.
  + Fixed some really terrible typos in the readme and settings page.

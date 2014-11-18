@@ -3,7 +3,7 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.1.1
+Version: 2.1.2
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License: Undecided
@@ -70,9 +70,9 @@ class autoseo {
 	public function admin_enqueued(){
 		// Load the admin scripts and styles where needed
 		// JS
-		wp_enqueue_script('critique_admin_js',plugin_dir_url( __FILE__ ).'/admin.js',array('jquery'));
+		wp_enqueue_script('auto-seo-admin-js',plugin_dir_url( __FILE__ ).'admin.js',array('jquery'));
 		// CSS
-		wp_enqueue_style('auto-seo-admin-css',plugin_dir_url( __FILE__ ).'/admin.css');
+		wp_enqueue_style('auto-seo-admin-css',plugin_dir_url( __FILE__ ).'admin.css');
 		wp_enqueue_style('auto-seo-admin-css');
 	}
 	public function add_meta_tags_obstart(){
