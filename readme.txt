@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.0.0
-Stable tag: 2.1.2
+Tested up to: 4.2
+Stable tag: 2.2.3
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,10 @@ The settings page has notes on their functions and should be self explanatory, b
 
 == Frequently Asked Questions ==
 
+= Can I translate this plugin into the language of my choice? = 
+
+Yes. There is a pot file located in the "_l18n" folder in the auto-seo directory. Place your .po and .mo files in that directory names with the appropiate region (i.e. da_DK.po and da_DK.mo).
+
 = I got this great idea, can you implement it? = 
 
 Probably, let me know and I'll see if I can work it in there.
@@ -41,6 +45,12 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.2.3
+ + Confirmed support for WordPress 4.2
+ + Fixed a possible PHP noticed appearing under certian conditions.
+ + Added support for localization. Check FAQ for details
+#### 2.1.3
+ + Confirmed plugin compatibility with WordPress 4.1
 #### 2.1.2
  + Fixed a bug that would prevent scripts from loading in my "critique" plugin.
  + Fixed a typo that would cause double backslashes from appearing in the script and style links (although the script and style fiels still loaded properly).

@@ -3,10 +3,13 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.1.2
+Version: 2.2.3
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
-License: Undecided
+License: GNU General Public License v2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: auto-seo
+Domain Path: /auto-seo/_l18n/
 */
 
 class autoseo {
@@ -24,15 +27,15 @@ class autoseo {
 				'page' => 'on',
 				'attachment' => 'on',
 			),
-			'keyword_sets' => array('Example Set'=>array('Such Example','Much Fast','Many Preset','Very Keyword','So Test','Wow'),),
+			'keyword_sets' => array('Example Set'=>array(__('Such Example','auto-seo'),__('Much Fast','auto-seo'),__('Many Preset','auto-seo'),__('Very Keyword','auto-seo'),__('So Test','auto-seo'),__('Wow','auto-seo')),),
 			'tags' => array(
 				'Title' => 'on',
 				'Description' => 'on',
 				'Keywords' => 'on',
 				'Robots' => 'off',
 			),
-			'title' => 'Auto SEO, [Example Set] | [Page Title].',
-			'description' => 'This is an example of a description placed with the Auto SEO WordPress Plugin. Auto SEO, [Example Set], [Example Set].',
+			'title' =>  __('Auto SEO, [Example Set] | [Page Title].','auto-seo'),
+			'description' => __('This is an example of a description placed with the Auto SEO WordPress Plugin. Auto SEO, [Example Set], [Example Set].','auto-seo'),
 			'keywords' => 13,
 			'robots' => 'INDEX, FOLLOW',
 		),(array)$settings);
@@ -47,16 +50,23 @@ class autoseo {
 		// Do the actual adding of the meta tags, we need to use an output buffer to grab whatever the head is, so we can regex it and remove the old stuff.
 		add_filter('get_header',array($this,'add_meta_tags_obstart'),0);
 		add_filter('wp_head',array($this,'add_meta_tags_obget'),9001);
+		// Setup domain for translation support
+		add_action('init',array($this,'enable_translation_support'));
+	}
+
+	public function enable_translation_support(){
+		// Load the appropriate language file.
+		load_textdomain('auto-seo',WP_PLUGIN_DIR.'/auto-seo/_l18n/'.get_locale().'.mo'); 
 	}
 
 	public function add_menu_item(){
 		// This will add the settings menu item
-		add_menu_page('Auto SEO','Auto SEO','manage_options','auto-seo-settings',array($this,'settings_page'),'dashicons-megaphone',77);
+		add_menu_page(__('Auto SEO','auto-seo'),__('Auto SEO','auto-seo'),'manage_options','auto-seo-settings',array($this,'settings_page'),'dashicons-megaphone',77);
 	}
 	public function settings_page(){
 		// Save the settings if sending post data
 		if(isset($_POST['action'])&&$_POST['action']=='update'){
-			echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
+			echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>'._e('Settings saved.','auto-seo').'</strong></p></div>';
 			unset($_POST['action']);
 			$this->save_settings($_POST);
 		}
@@ -64,7 +74,7 @@ class autoseo {
 		require_once('settings.php');
 	}
 	public function add_settings_link($links){
-		$links[] = '<a href="admin.php?page=auto-seo-settings">Settings</a>';
+		$links[] = '<a href="admin.php?page=auto-seo-settings">'.__('Settings','auto-seo').'</a>';
 		return $links;
 	}
 	public function admin_enqueued(){
@@ -83,12 +93,12 @@ class autoseo {
 	}
 	public function add_meta_tags_obget(){
 		//this whole section can be skipped if it's not enabled for this post type
-		if($this->settings['post_types'][get_post_type(get_the_ID())]=='on' || $_POST['autoseo_compatibility']=='check'){
+		if($this->settings['post_types'][get_post_type(get_the_ID())]=='on' || ( isset($_POST['autoseo_compatibility']) && $_POST['autoseo_compatibility']=='check') ){
 			// Get the head, determin what meta items were going to add/change, remove old if any, add new, output head
 			$head = ob_get_clean();
 			// Determin what sections are on, and replace them as needed.
 			foreach($this->settings['tags'] as $tag => $status){
-				if($status=='on' || $_POST['autoseo_compatibility']=='check'){
+				if($status=='on' || ( isset($_POST['autoseo_compatibility']) && $_POST['autoseo_compatibility']=='check') ){
 					switch($tag){
 						case 'Title':
 							preg_match_all('~<title>([^(</)]*)</ ?title>~',$head,$matches);
@@ -133,9 +143,9 @@ class autoseo {
 					}
 				}
 			}
+			// were done working with this, we can echo it out and be done with it.
+			echo $head;
 		}
-		// were done working with this, we can echo it out and be done with it.
-		echo $head;
 	}
 	public function bracket_replace($string,$bracket,$replacement,$starting_point=0){
 		// Replace the brackets in strings with the desired variable
