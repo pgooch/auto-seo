@@ -1,0 +1,260 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Auto SEO\n"
+"POT-Creation-Date: 2015-04-21 15:53-0800\n"
+"PO-Revision-Date: 2015-04-27 09:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: /Users/phillip/Development/Wordpress Development/wp-"
+"content/plugins/auto-seo\n"
+"Language: es_ES\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: auto-seo.php:29
+msgid "Such Example"
+msgstr "Tal Ejemplo"
+
+#: auto-seo.php:29
+msgid "Much Fast"
+msgstr "Más Rápido"
+
+#: auto-seo.php:29
+msgid "Many Preset"
+msgstr "Mucho Presente"
+
+#: auto-seo.php:29
+msgid "Very Keyword"
+msgstr "Muy Palabra Clave"
+
+#: auto-seo.php:29
+msgid "So Test"
+msgstr "Tan Prueba"
+
+#: auto-seo.php:29
+msgid "Wow"
+msgstr "Wow"
+
+#: auto-seo.php:36
+msgid "Auto SEO, [Example Set] | [Page Title]."
+msgstr "Auto SEO, [Grupo de Ejemplo] | [Título de la Página]."
+
+#: auto-seo.php:37
+msgid ""
+"This is an example of a description placed with the Auto SEO WordPress "
+"Plugin. Auto SEO, [Example Set], [Example Set]."
+msgstr ""
+"Esto es un ejemplo de una descripción añadida con el Plugin de Auto SEO de "
+"WordPress, [Grupo de Ejemplo], [Grupo de Ejemplo]."
+
+#: auto-seo.php:63
+msgid "Auto SEO"
+msgstr "Auto SEO"
+
+#: auto-seo.php:68
+msgid "Settings saved."
+msgstr "Ajustes salvados."
+
+#: auto-seo.php:76
+msgid "Settings"
+msgstr "Ajustes"
+
+#: settings.php:3
+msgid "Auto SEO Settings"
+msgstr "Ajustes de Auto SEO"
+
+#: settings.php:6
+msgid "Active Post Types"
+msgstr "Tipos de Post Activo"
+
+#: settings.php:8
+msgid "Which post types would you like Auto SEO to run on?"
+msgstr "¿En cuáles tipos de post le gustaría que Auto SEO ejecute?"
+
+#: settings.php:10
+msgid "Enable in Posts Types"
+msgstr "Habilitar en Tipos de Posts"
+
+#: settings.php:12
+msgid "Auto SEO will only run an the selected page types."
+msgstr "Auto SEO solo ejecutará en los tipos de página seleccionados. "
+
+#: settings.php:25
+msgid "Keyword Sets"
+msgstr "Grupos de Palabras Claves"
+
+#: settings.php:27
+msgid ""
+"Using a set name in brackets (ie <code>[Example Set]</code>) in a meta tag "
+"will insert a randomly selected keyword in that set. Keywords should be "
+"comma separated. Deleting a keyword sets name will remove the set."
+msgstr ""
+"Usando un nombre de grupo entre corchetes (e.j. <code>[Grupo de Ejemplo]</"
+"code>) en una etiqueta meta insertará  una palabra clave seleccionada "
+"aleatoriamente en ese grupo.Las palabras claves deben estar separadas por "
+"coma. Borrar un grupo de palabras claves borrará el grupo. "
+
+#: settings.php:29
+msgid "Set Name"
+msgstr "Nombre del Grupo"
+
+#: settings.php:30
+msgid "Set Keywords"
+msgstr "Palabras Claves del Grupo"
+
+#: settings.php:45
+msgid "Add Keyword Set"
+msgstr "Adicionar Grupo de Palabra Clave"
+
+#: settings.php:47
+msgid "Meta Tag Options"
+msgstr "Opciones de Etiqueta Meta"
+
+#: settings.php:50
+msgid "Tags Enabled"
+msgstr "Etiquetas Habilitadas"
+
+#: settings.php:52
+msgid "Check which meta tags you want Auto SEO to create / overwrite."
+msgstr ""
+"Chequear con etiquetas meta que usted desea que Auto SEO cree/sobreescriba."
+
+#: settings.php:64
+msgid "Title"
+msgstr "Título"
+
+#: settings.php:67
+msgid ""
+"You can use any of the above Keyword Set Names in square Brackets (ie "
+"<code>[Example Set]</code>) to place a random keyword from that set or "
+"<code>[Page Title]</code> to place the page or post title."
+msgstr ""
+"Usted puede usar cualquiera de los Nombres de Grupo de Palabra Clave entre "
+"Corchetes (e.j. <code>[Grupo de Ejemplo]</code>) para posicionar una palabra "
+"clave aleatoria desde ese grupo o <code>[Título de la Página]</code> para "
+"posicionar el título de la página o el post."
+
+#: settings.php:71
+msgid "Description"
+msgstr "Descripción"
+
+#: settings.php:74
+msgid ""
+"You can use any of the above Keyword Set Names in square Brackets (ie "
+"<code>[Example Set]</code>) to place a random keyword from that set."
+msgstr ""
+"Usted puede usar cualquiera de los Nombres de Grupo de Palabra Clave "
+"anteriores entre corchetes (e.j. <code>[Grupo de Ejemplo]</code>) para "
+"posicionar una palabra clave aleatoria de ese grupo."
+
+#: settings.php:78
+msgid "Number of Keywords"
+msgstr "Número de Palabras Claves"
+
+#: settings.php:81
+msgid ""
+"How many keywords you want placed in the keywords meta tag. Keywords are "
+"pulled from all sets."
+msgstr ""
+"Cuántas palabras claves quiere posicionar en la etiqueta meta de palabras "
+"claves. Las palabras claves son extraídas de todos los grupos."
+
+#: settings.php:85
+msgid "Robots"
+msgstr "Roboces"
+
+#: settings.php:87
+msgid "Index Page, Follow Links"
+msgstr "Indexar Página, Seguir Enlaces"
+
+#: settings.php:88
+msgid "Index Page, Don't Follow Links"
+msgstr "Indexar Página, No Seguir Enlaces"
+
+#: settings.php:89
+msgid "Don't index page or follow links"
+msgstr "No indexar página o seguir enlaces"
+
+#: settings.php:91
+msgid ""
+"Controls how search engines index and search your site, may be overridden by "
+"ROBOTS.TXT file."
+msgstr ""
+"Controla cómo los motores de búsqueda indexan y buscan su sitio, puede ser "
+"sobrescrito por el fichero ROBOTS.TXT."
+
+#: settings.php:101
+msgid "Compatibility"
+msgstr "Compatibilidad"
+
+#: settings.php:103
+msgid "Auto SEO is currently checking compatibility..."
+msgstr "Auto SEO está chequeando compatibilidad..."
+
+#: settings.php:110
+msgid "Auto SEO appears to be working."
+msgstr "Auto SEO parece estar trabajando."
+
+#: settings.php:112
+msgid ""
+"Auto SEO does not appear to be compatible with your current Theme and Plugin "
+"Combination."
+msgstr "Auto SEO no parece ser compatible con su Combinación de Plugin y Tema."
+
+#: settings.php:114
+msgid "Click here to run compatibility check again"
+msgstr "Haga clic aquí para correr el chequeo de compatibilidad nuevamente"
+
+#: settings.php:121
+msgid "Miscellaneous"
+msgstr "Miscelaneas "
+
+#: settings.php:124
+msgid "Have a problem"
+msgstr "Tiene un problema"
+
+#: settings.php:126
+msgid ""
+"Having trouble getting the plug-in working? Expected results? Feel like "
+"direction your repentant rage at someone far far away? Just have a general "
+"usage question? You can try the <a href=\"http://wordpress.org/support/"
+"plugin/auto-seo\" target=\"_blank\">plug-ins support form</a> or, if you "
+"want an answer from the source, feel free to email me at <a href=\"mailto:"
+"phillip.gooch@gmail.com\" target=\"_blank\">phillip.gooch@gmail.com</a>."
+msgstr ""
+"¿Tiene problemas haciendo que el plugin funcione? ¿ Resultados esperados? "
+"¿Siente que direcciona su furia repentina a alguien muy muy lejos? ¿Tiene "
+"alguna pregunta sobre el uso general? Puede probar la <a href=\"http://"
+"wordpress.org/support/plugin/auto-seo\" target=\"_blank\">forma de soporte "
+"de plugins</a> o, si desea una respuesta mía, siéntase libre de enviarme un "
+"email a <a href=\"mailto:phillip.gooch@gmail.com\" target=\"_blank\">phillip."
+"gooch@gmail.com</a>."
+
+#: settings.php:132
+msgid ""
+"Want to see how it all works, you can check out the on the <a href=\"http://"
+"plugins.svn.wordpress.org/auto-seo/trunk/\" target=\"_blank\">WordPress SVN</"
+"a> or, even better, <a href=\"https://github.com/pgooch/auto-seo\" target="
+"\"_blank\">fork it on GitHub</a>. Feel free to make changes and submit pull "
+"requests, good ideas will be added to the master branch."
+msgstr ""
+"Si quiere ver cómo funciona todo, puede chequearlo en el <a href=\"http://"
+"plugins.svn.wordpress.org/auto-seo/trunk/\" target=\"_blank\">SVN de "
+"WordPress</a> o, aún mejor, <a href=\"https://github.com/pgooch/auto-seo\" "
+"target=\"_blank\">obtenerlo de GitHub</a>. Siéntase libre de hacer cambios y "
+"subirlos, las buenas ideas serán añadidas a la rama principal. "
+
+#: settings.php:138
+msgid ""
+"Like the plug-in and want to support further development? Thanks! You can "
+"use the paypal button below to donate any amount you want. Don't like "
+"PayPal? send me an email, we can figure something out.<br/>"
+msgstr ""
+"¿Le gusta el plugin y quiere soportar el desarrollo futuro? ¡Gracias! Usted "
+"puede usar el botón de Paypal debajo para donar cualquier cantidad que "
+"desee. ¿No le gusta PayPal? envíeme un email, podemos arreglar alguna otra "
+"vía.<br/>"

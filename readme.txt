@@ -3,7 +3,7 @@ Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
 Tested up to: 4.2
-Stable tag: 2.2.3
+Stable tag: 2.3.3
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptio
 
 Auto SEO is a simple way to add all your SEO header tags from a single interface. It will generate new meta tags, replacing any old ones your theme may add already, that are fully customized to target the audience you want. Don't want to override everything? No problem, you choose what to override and on what post types to do it. Take the tedium out of SEO.
 
-_Note: because Auto SEO is designed to override existing meta tags when needed it works a bit differently than other SEO plugins and as such may not work on every theme. While it has been tested with a wide variety of different themes naturally it would be impossible to test them all. If your having trouble getting it to active on your site I'm more than willing to help, just let me know what theme your using and I'll take a look, contact information inside the plugin.
+_Note: because Auto SEO is designed to override existing meta tags when needed it works a bit differently than other SEO plugins and as such may not work on every theme. While it has been tested with a wide variety of different themes naturally it would be impossible to test them all. If your having trouble getting it to active on your site I'm more than willing to help, just let me know what theme your using and I'll take a look, contact information inside the plugin._
 
 == Installation ==
 
@@ -45,6 +45,8 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.3.3
+ + Added a translation to Spanish by Andrew Kurtis. Thanks Andrew!
 #### 2.2.3
  + Confirmed support for WordPress 4.2
  + Fixed a possible PHP noticed appearing under certian conditions.
