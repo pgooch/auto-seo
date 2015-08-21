@@ -2,7 +2,7 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: 2.3.3
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
