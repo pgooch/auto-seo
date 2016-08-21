@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.3
-Stable tag: 2.3.3
+Tested up to: 4.6
+Stable tag: 2.3.4
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,8 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.3.4
+ + Modified the plugin to support PHP versions < 5.4 when using the default PHP settings. *Note: This has no been extensively tested and PHP version 5.4 or great is still recommended.*
 #### 2.3.3
  + Added a translation to Spanish by Andrew Kurtis. Thanks Andrew!
 #### 2.2.3

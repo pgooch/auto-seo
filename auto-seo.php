@@ -3,7 +3,7 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.3.3
+Version: 2.3.4
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License: GNU General Public License v2
