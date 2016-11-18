@@ -3,7 +3,7 @@ Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
 Tested up to: 4.6
-Stable tag: 2.3.4
+Stable tag: 2.4.4
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,10 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.4.4
+ + Added [Page Title] to the valid substitutions in the description field.
+ + Adjusted how the page title is gathered to avoid double-titling in some use cases.
+ + Made some changes to the main file so that it is easier to read and understand the code.
 #### 2.3.4
  + Modified the plugin to support PHP versions < 5.4 when using the default PHP settings. *Note: This has no been extensively tested and PHP version 5.4 or great is still recommended.*
 #### 2.3.3
