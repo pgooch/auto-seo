@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.6
-Stable tag: 2.4.4
+Tested up to: 4.7.1
+Stable tag: 2.5.4
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.5.4
+ + Added several new built-in keywords sets inlcuding Page Title, Categories, and Author. A complete list is available on the settings page.
+ + Page titles should now be cleaned of any dividers that end up dangling at the end.
 #### 2.4.4
  + Added [Page Title] to the valid substitutions in the description field.
  + Adjusted how the page title is gathered to avoid double-titling in some use cases.

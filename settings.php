@@ -43,6 +43,43 @@
 			<?php } ?>
 		</table>
 		<a href="#add-keyword-set"><?php echo __('Add Keyword Set','auto-seo') ?></a><br/>
+		<br/>
+		<table class="form-table keyword-sets">
+			<p class="description"><?php echo __('In addition to the custom keyword sets defined above the following built-in keyword sets are available.','auto-seo') ?></p>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Page Title" disabled /></td>
+				<td scope="col"><?php echo __('The page title. This will be blank on the blog home page.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Date" disabled /></td>
+				<td scope="col"><?php echo __('The post date.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Author" disabled /></td>
+				<td scope="col"><?php echo __('The name of the posts author.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Type" disabled /></td>
+				<td scope="col"><?php echo __('The posts type, either Post, Page, or a Custom Type.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Category" disabled /></td>
+				<td scope="col"><?php echo __('A randomly selected category assigned to that page. Like the custom examples this will be the same randomly selected category each page load unless you modifiy the pages categories.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Categories" disabled /></td>
+				<td scope="col"><?php echo __('A comma-seperated list of all the categories assigned to the page.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Tag" disabled /></td>
+				<td scope="col"><?php echo __('A randomly selected tag assigned to that post. Like the custom examples this will be the same randomly selected category each page load unless you modifiy the posts tags.','auto-seo') ?></td>
+			</tr>
+			<tr valign="top">
+				<td scope="col"><input type="text" name="" value="Tags" disabled /></td>
+				<td scope="col"><?php echo __('A comma-seperated list of all the tags assigned to the post.','auto-seo') ?></td>
+			</tr>
+
+		</table>
 
 		<h3 class="title"><?php echo __('Meta Tag Options','auto-seo') ?></h3>
 		<table class="form-table">
@@ -64,7 +101,7 @@
 				<th scope="row"><label for="title"><?php echo __('Title','auto-seo') ?></label></th>
 				<td>
 					<input name="title" type="text" id="title" value="<?php echo $this->settings['title'] ?>" class="regular-text">
-					<p class="description"><?php echo __('You can use any of the above Keyword Set Names in square Brackets (ie <code>[Example Set]</code>) to place a random keyword from that set or <code>[Page Title]</code> to place the page or post title.','auto-seo') ?></p>
+					<p class="description"><?php echo __('You can use any of the above Keyword Set Names in square Brackets (ie <code>[Example Set]</code>) to place a random keyword from that set.','auto-seo') ?></p>
 				</td>
 			</tr>
 			<tr valign="top">

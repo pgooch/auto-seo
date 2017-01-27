@@ -3,7 +3,7 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.4.4
+Version: 2.5.4
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License: GNU General Public License v2
@@ -113,7 +113,10 @@ class autoseo {
 		
 		//this whole section can be skipped if it's not enabled for this post type
 		if($this->settings['post_types'][get_post_type(get_the_ID())]=='on' || ( isset($_POST['autoseo_compatibility']) && $_POST['autoseo_compatibility']=='check') ){
-			
+
+			// Load up the additional keyword sets that are page specific.
+			$this->load_special_keyword_sets();
+
 			// Get the head, determin what meta items were going to add/change, remove old if any, add new, output head
 			$head = ob_get_clean();
 			
@@ -123,15 +126,16 @@ class autoseo {
 					switch($tag){
 						case 'Title':
 							$head = preg_replace('~<title>[^(</)]*</ ?title>~','<!-- Auto SEO was here! -->',$head);
-							$title = $this->bracket_replace($this->settings['title'],'Page Title',single_post_title('',false));
-							$title = $this->replace_keyword_brackets($title);
+							$title = $this->replace_keyword_brackets($this->settings['title']);
+							// Try and clean off any dividers from the title, in case the last bas is missing 
+							$title = preg_replace('~[^A-Za-z0-9,\.\']+$~','',$title);
+
 							$head .= '<!-- Auto SEO Added -->'."\n".'<title>'.$title.'</title>'."\n";
 						break;
 						
 						case 'Description':
 							$head = preg_replace('~<meta.*name=[\'|"]?description[\'|"]?.*/ ?>~','<!-- Auto SEO was here! -->',$head);
 							$description = $this->replace_keyword_brackets($this->settings['description']);
-							$description = $this->bracket_replace($description,'Page Title',single_post_title('',false));
 							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="description" content="'.$description.'" />'."\n";
 						break;
 						
@@ -173,6 +177,74 @@ class autoseo {
 			// were done working with this, we can echo it out and be done with it.
 			echo $head;
 		}
+	}
+
+	/*
+		Load special keyword sets
+
+		This will load up special page/post specific keyword sets. This includings things like Page Title, Tags, and 
+		Categories. Once loaded they will go into the master keywords_sets list to get replaced during the custom 
+		keyword replacment step.
+	*/
+	private function load_special_keyword_sets(){
+
+		// Page title
+		$this->settings['keyword_sets']['Page Title'] = single_post_title('',false);
+
+		// Prepping for the ones that may have more than one option.
+		$starting_point = round((int)get_the_ID()*pi());
+
+		// Category (one at pseudo-random);
+		$categories = get_the_category(get_the_ID());
+		if(!is_bool($categories)){
+			foreach($categories as $n => $cat){
+				$categories[$n] = $cat->cat_name;
+			}
+			$count = $starting_point%count($categories);
+			$this->settings['keyword_sets']['Category'] = $categories[$count];
+
+			// Add all categories in comma seperated list
+			$this->settings['keyword_sets']['Categories'] = implode(', ',$categories);
+		}
+
+		// Tag (one at pseudo-random);
+		$tags = get_the_tags(get_the_ID());
+		if(!is_bool($tags)){
+			foreach($tags as $n => $tag){
+				$tags[$n] = $tag->name;
+			}
+			$count = $starting_point%count($tags);
+			$this->settings['keyword_sets']['Tag'] = $tags[$count];
+
+			// Add all tags in comma seperated list
+			$this->settings['keyword_sets']['Tags'] = implode(', ',$tags);
+		}
+
+		// Date of the post and the author
+		$this->settings['keyword_sets']['Date'] = get_the_date(null,get_the_ID());
+		$this->settings['keyword_sets']['Author'] = get_the_author_meta('display_name',get_post_field('post_author',get_the_ID(),'display'));
+
+		// Comments
+		$comments = wp_count_comments(get_the_ID());
+		$this->settings['keyword_sets']['Comments'] = $comments->moderated;
+
+		// The post format (secret because it's pretty much garbage but I didn't think of that till it was built)
+		$format = get_post_format(get_the_ID());
+		if($format!==false){
+			$this->settings['keyword_sets']['Format'] = $format;
+		}else{
+			$this->settings['keyword_sets']['Format'] = '';
+		}
+
+		// The type of the post using it's display name
+		$type = get_post_type_object(get_post_type(get_the_ID()));
+		$this->settings['keyword_sets']['Type'] = $type->labels->singular_name;
+
+		// For testing checking when adding new types
+		// echo '<pre>';
+		// var_dump($this->settings['keyword_sets']);
+		// echo '</pre>';
+
 	}
 
 	/*
