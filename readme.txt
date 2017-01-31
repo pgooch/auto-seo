@@ -3,7 +3,7 @@ Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
 Tested up to: 4.7.1
-Stable tag: 2.5.4
+Stable tag: 2.5.5
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,8 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.5.5
+ + Fixed a bug that could cause pages to not load if there was no categories or tags assigned.
 #### 2.5.4
  + Added several new built-in keywords sets inlcuding Page Title, Categories, and Author. A complete list is available on the settings page.
  + Page titles should now be cleaned of any dividers that end up dangling at the end.

@@ -3,7 +3,7 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.5.4
+Version: 2.5.5
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License: GNU General Public License v2
@@ -196,7 +196,7 @@ class autoseo {
 
 		// Category (one at pseudo-random);
 		$categories = get_the_category(get_the_ID());
-		if(!is_bool($categories)){
+		if(!is_bool($categories) && count($categories)>0){
 			foreach($categories as $n => $cat){
 				$categories[$n] = $cat->cat_name;
 			}
@@ -209,7 +209,7 @@ class autoseo {
 
 		// Tag (one at pseudo-random);
 		$tags = get_the_tags(get_the_ID());
-		if(!is_bool($tags)){
+		if(!is_bool($tags) && count($tags)>0){
 			foreach($tags as $n => $tag){
 				$tags[$n] = $tag->name;
 			}
