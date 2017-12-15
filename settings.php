@@ -38,7 +38,7 @@
 			foreach($sets as $name => $keywords){ ?>
 				<tr valign="top" <?php echo ($name=='_blank'?'style="display:none;"':'') ?>>
 					<td class="top-align"><input type="text" name="keyword_set-name[]" value="<?php echo $name ?>" /></td>
-					<td><textarea name="keyword_set-words[]"><?php echo implode(', ',$keywords) ?></textarea></td>
+					<td><textarea name="keyword_set-words[]"><?php echo stripslashes(implode(', ',$keywords)) ?></textarea></td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -100,14 +100,14 @@
 			<tr valign="top">
 				<th scope="row"><label for="title"><?php echo __('Title','auto-seo') ?></label></th>
 				<td>
-					<input name="title" type="text" id="title" value="<?php echo $this->settings['title'] ?>" class="regular-text">
+					<input name="title" type="text" id="title" value="<?php echo stripslashes($this->settings['title']) ?>" class="regular-text">
 					<p class="description"><?php echo __('You can use any of the above Keyword Set Names in square Brackets (ie <code>[Example Set]</code>) to place a random keyword from that set.','auto-seo') ?></p>
 				</td>
 			</tr>
 			<tr valign="top">
 				<th scope="row"><label for="description"><?php echo __('Description','auto-seo') ?></label></th>
 				<td>
-				<textarea name="description" id="description"><?php echo $this->settings['description'] ?></textarea>
+				<textarea name="description" id="description"><?php echo stripslashes($this->settings['description']) ?></textarea>
 					<p class="description"><?php echo __('You can use any of the above Keyword Set Names in square Brackets (ie <code>[Example Set]</code>) to place a random keyword from that set.','auto-seo') ?></p>
 				</td>
 			</tr>

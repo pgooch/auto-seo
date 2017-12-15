@@ -3,7 +3,7 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.5.5
+Version: 2.5.6
 Author: Phillip Gooch
 Author URI: mailto:phillip.gooch@gmail.com
 License: GNU General Public License v2
@@ -130,13 +130,13 @@ class autoseo {
 							// Try and clean off any dividers from the title, in case the last bas is missing 
 							$title = preg_replace('~[^A-Za-z0-9,\.\']+$~','',$title);
 
-							$head .= '<!-- Auto SEO Added -->'."\n".'<title>'.$title.'</title>'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<title>'.stripslashes($title).'</title>'."\n";
 						break;
 						
 						case 'Description':
 							$head = preg_replace('~<meta.*name=[\'|"]?description[\'|"]?.*/ ?>~','<!-- Auto SEO was here! -->',$head);
 							$description = $this->replace_keyword_brackets($this->settings['description']);
-							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="description" content="'.$description.'" />'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="description" content="'.stripslashes($description).'" />'."\n";
 						break;
 						
 						case 'Keywords':
@@ -165,7 +165,7 @@ class autoseo {
 							
 							// Now we can run it through the bracket replacer and output it like the others
 							$keywords = $this->replace_keyword_brackets(substr($keywords,2));
-							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="keywords" content="'.$keywords.'" />'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="keywords" content="'.stripslashes($keywords).'" />'."\n";
 						break;
 						case 'Robots':
 							$head = preg_replace('~<meta.*name=[\'|"]?robots[\'|"]?.*/ ?>~','<!-- Auto SEO was here! -->',$head);
