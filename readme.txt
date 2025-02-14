@@ -2,8 +2,8 @@
 Contributors: Phillip.Gooch
 Tags: pages, seo, meta-tags, admin
 Requires at least: 3.4
-Tested up to: 4.9
-Stable tag: 2.5.6
+Tested up to: 6.7.2
+Stable tag: 2.6.6
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,11 @@ Probably, let me know and I'll see if I can work it in there.
 
 == Changelog ==
 
+#### 2.6.6
+ + Fixed an issue related to saving settings and the messages display by those actions.
+ + Fixed a problem with extra fixes sets appearing to be created while adding custom sets.
+ + Updated code to comply with modern WordPress Plugin standards.
+ + Updated the donate link to another service.
 #### 2.5.6
  + Fixed an escaping issue.
 #### 2.5.5

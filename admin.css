@@ -17,9 +17,10 @@
 	display: inline-block;
 }
 
+.fixed-keyword-sets tr > td:first-child,
 .keyword-sets tr > td:first-child{
 	width: 190px!important;
 }
-.keyword-sets input[disabled] {
+.fixed-keyword-sets input[disabled] {
     color: black!important;
 }

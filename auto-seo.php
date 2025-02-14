@@ -3,13 +3,13 @@
 Plugin Name: Auto SEO
 Plugin URI: http://fatfolderdesign.com/auto-seo/
 Description: Auto SEO is a quick, simple way to add title, meta keywords, and meta descriptions to your site all at one from a single page.
-Version: 2.5.6
+Version: 2.6.6
 Author: Phillip Gooch
-Author URI: mailto:phillip.gooch@gmail.com
+Author URI: https://github.com/pgooch
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: auto-seo
-Domain Path: /auto-seo/_l18n/
+Domain Path: /_l18n/
 */
 
 class autoseo {
@@ -55,6 +55,62 @@ class autoseo {
 	}
 
 	/*
+		This is all the elements and the attributes formally allowed in the head (to the best of my ebility). This is used so we can escape the output properly.
+		The entries linline horizontally are all the common attributres, the vertical ones are attributes for that specific element.
+	*/
+	private function get_head_kisses_escape_settings(){
+		return [
+			'title'=>[
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			],
+			'meta'=>[
+				'charset'=>[],
+				'content'=>[],
+				'http-equiv'=>[],
+				'name'=>[],
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			],
+			'style'=>[
+				'media'=>[],
+				'type'=>[],
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			],
+			'base'=>[
+				'href'=>[],
+				'target'=>[],
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+
+			],
+			'link'=>[
+				'crossorigin'=>[],
+				'href'=>[],
+				'hreflang'=>[],
+				'media'=>[],
+				'referrerpolicy'=>[],
+				'rel'=>[],
+				'sizes'=>[],
+				'title'=>[],
+				'type'=>[],
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			],
+			'script'=>[
+				'async'=>[],
+				'crossorigin'=>[],
+				'defer'=>[],
+				'integrity'=>[],
+				'nomodule'=>[],
+				'referrerpolicy'=>[],
+				'src'=>[],
+				'type'=>[],
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			],
+			'noscript'=>[
+				'accesskey'=>[],'class'=>[],'contenteditable'=>[],'dir'=>[],'draggable'=>[],'enmterkeyhint'=>[],'hidden'=>[],'id'=>[],'inert'=>[],'inputmode'=>[],'lang'=>[],'popoiver'=>[],'spellcheck'=>[],'style'=>[],'tabindex'=>[],'titile'=>[],'translate'=>[],
+			]
+		];
+	}
+
+	/*
 		It's been translated, Yay! Now we gotta load the mo files
 	*/
 	public function enable_translation_support(){
@@ -72,12 +128,17 @@ class autoseo {
 	}
 	public function settings_page(){
 		// Save the settings if sending post data
-		if(isset($_POST['action'])&&$_POST['action']=='update'){
-			echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>'._e('Settings saved.','auto-seo').'</strong></p></div>';
-			unset($_POST['action']);
-			$this->save_settings($_POST);
+		if(isset($_POST['action'])&&$_POST['action']=='update'&&current_user_can('manage_options')){
+			if(check_admin_referer( 'updating-auto-seo-settings' )){
+				unset($_POST['action']);
+				$this->save_settings($_POST);
+				add_settings_error( 'auto-seo-messages', 'save_message', __( 'Settings Updated.', 'auto-seo' ), 'success' );
+			}else{
+				add_settings_error( 'auto-seo-messages', 'save_message', __( 'There was an error updating the settings.', 'auto-seo' ), 'error' );
+			}
 		}
 		// Load Settings Page, kept externally for brevity's sake
+		settings_errors( 'auto-seo-messages' );
 		require_once('settings.php');
 	}
 	public function add_settings_link($links){
@@ -87,9 +148,9 @@ class autoseo {
 	public function admin_enqueued(){
 		// Load the admin scripts and styles where needed
 		// JS
-		wp_enqueue_script('auto-seo-admin-js',plugin_dir_url( __FILE__ ).'admin.js',array('jquery'));
+		wp_enqueue_script('auto-seo-admin-js',plugin_dir_url( __FILE__ ).'admin.js',array('jquery'),true,['in_footer'=>true]);
 		// CSS
-		wp_enqueue_style('auto-seo-admin-css',plugin_dir_url( __FILE__ ).'admin.css');
+		wp_enqueue_style('auto-seo-admin-css',plugin_dir_url( __FILE__ ).'admin.css',[],true);
 		wp_enqueue_style('auto-seo-admin-css');
 	}
 
@@ -112,7 +173,7 @@ class autoseo {
 	public function add_meta_tags_obget(){
 		
 		//this whole section can be skipped if it's not enabled for this post type
-		if($this->settings['post_types'][get_post_type(get_the_ID())]=='on' || ( isset($_POST['autoseo_compatibility']) && $_POST['autoseo_compatibility']=='check') ){
+		if($this->settings['post_types'][get_post_type(get_the_ID())]=='on' || ( isset($_POST['autoseo_compatibility']) && $_POST['autoseo_compatibility']=='check' && check_ajax_referer( 'auto-seo-check-compatibility' )) ){
 
 			// Load up the additional keyword sets that are page specific.
 			$this->load_special_keyword_sets();
@@ -128,15 +189,15 @@ class autoseo {
 							$head = preg_replace('~<title>[^(</)]*</ ?title>~','<!-- Auto SEO was here! -->',$head);
 							$title = $this->replace_keyword_brackets($this->settings['title']);
 							// Try and clean off any dividers from the title, in case the last bas is missing 
-							$title = preg_replace('~[^A-Za-z0-9,\.\']+$~','',$title);
+							$title = esc_html(preg_replace('~[^A-Za-z0-9,\.\']+$~','',$title));
 
-							$head .= '<!-- Auto SEO Added -->'."\n".'<title>'.stripslashes($title).'</title>'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<title>'.esc_attr($title).'</title>'."\n";
 						break;
 						
 						case 'Description':
 							$head = preg_replace('~<meta.*name=[\'|"]?description[\'|"]?.*/ ?>~','<!-- Auto SEO was here! -->',$head);
 							$description = $this->replace_keyword_brackets($this->settings['description']);
-							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="description" content="'.stripslashes($description).'" />'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="description" content="'.esc_attr($description).'" />'."\n";
 						break;
 						
 						case 'Keywords':
@@ -165,17 +226,17 @@ class autoseo {
 							
 							// Now we can run it through the bracket replacer and output it like the others
 							$keywords = $this->replace_keyword_brackets(substr($keywords,2));
-							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="keywords" content="'.stripslashes($keywords).'" />'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="keywords" data-testing="fuck" content="'.esc_attr($keywords).'" />'."\n";
 						break;
 						case 'Robots':
 							$head = preg_replace('~<meta.*name=[\'|"]?robots[\'|"]?.*/ ?>~','<!-- Auto SEO was here! -->',$head);
-							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="robots" content="'.$this->settings['robots'].'" />'."\n";
+							$head .= '<!-- Auto SEO Added -->'."\n".'<meta name="robots" content="'.esc_attr($this->settings['robots']).'" />'."\n";
 						break;
 					}
 				}
 			}
-			// were done working with this, we can echo it out and be done with it.
-			echo $head;
+			// were done working with this, we can echo it out but first there is some complicated escaping that needs to be done.
+			echo wp_kses($head, $this->get_head_kisses_escape_settings());
 		}
 	}
 
